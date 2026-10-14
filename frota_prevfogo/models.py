@@ -35,4 +35,4 @@ class Veiculo(models.Model):
 
 
     def __str__(self):
-        return f"{self.marc} {self.model} - Renavam: {self.renavam}"
+        return f"{self.marca} {self.modelo} - Renavam: {self.renavam}"
