@@ -24,6 +24,6 @@ class VeiculoModelAdmin(admin.ModelAdmin):
         'patrimonio',
         'quilometragem_atual',
         'data_revisao',
-        'km_ultima_rev'
+        'km_ultima_rev',
         'prox_revisao',
     )
