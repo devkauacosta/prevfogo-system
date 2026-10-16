@@ -30,9 +30,16 @@ class Veiculo(models.Model):
     data_revisao = models.DateField(blank=True, null=True)
     km_ultima_rev = models.PositiveIntegerField(blank=True, null=True)
     prox_revisao = models.DateField(blank=True, null=True)
-    documentacao_mv = models.FileField(upload_to='docs_mvs/', blank=True, null=True)
-    documentacao_os = models.FileField(upload_to='docs_oss/', blank=True, null=True)
-
 
     def __str__(self):
         return f"{self.marca} {self.modelo} - Renavam: {self.renavam}"
+
+
+class DocMvVeiculo(models.Model):
+    veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='doc_mv')
+    documento_mv = models.FileField(upload_to='veiculos/mvs')
+
+
+class DocOSVeiculo(models.Model):
+    veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='doc_os')
+    documento_os = models.FileField(upload_to='veiculos/os')
