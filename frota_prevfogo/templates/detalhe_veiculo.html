@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veiculo: {{ veiculo.modelo }} - {{ veiculo.renavam }}</title>
+</head>
+<body>
+    <header>
+        <a href="{% url 'lista_veiculos' %}">
+            <button type="button">Voltar</button>
+        </a>
+    </header>
+    <main>
+        <h1>Veículo: {{ veiculo.modelo }} - Renavam: {{ veiculo.renavam }}</h1>
+        <p>{{ veiculo.renavam }}</p>
+        <p>{{ veiculo.chassi }}</p>
+        <p>{{ veiculo.placa }}</p>
+        <p>{{ veiculo.marca }}</p>
+        <p>{{ veiculo.modelo }}</p>
+        <p>{{ veiculo.ano }}</p>
+        <p>{{ veiculo.tipo }}</p>
+        <p>{{ veiculo.patrimonio }}</p>
+        <p>{{ veiculo.quilometragem_atual }}</p>
+        <p>{{ veiculo.data_revisao }}</p>
+        <p>{{ veiculo.km_ultima_rev }}</p>
+        <p>{{ veiculo.prox_revisao }}</p>
+    </main>
+</body>
+</html>

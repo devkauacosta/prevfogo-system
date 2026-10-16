@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 from .models import Veiculo, DocMvVeiculo, DocOSVeiculo
 from .forms import VeiculoModelForm
 
@@ -8,6 +8,11 @@ class VeiculosListView(ListView):
     model = Veiculo
     template_name = 'veiculos.html'
     context_object_name = 'veiculos'
+
+
+class VeiculoDetail(DetailView):
+    model = Veiculo
+    template_name = 'detalhe_veiculo.html'
 
 
 class VeiculoCreate(CreateView):

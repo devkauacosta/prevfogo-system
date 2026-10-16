@@ -64,6 +64,7 @@
                         <th>Última revisão</th>
                         <th>Km última revisão</th>
                         <th>Próxima revisão</th>
+                        <th>Detalhes</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -81,6 +82,11 @@
                             <td>{{ veiculo.data_revisao }}</td>
                             <td>{{ veiculo.km_ultima_rev }}</td>
                             <td>{{ veiculo.prox_revisao }}</td>
+                            <td>
+                                <a href="{% url 'veiculo_detalhe' veiculo.pk %}">
+                                    <button type="button">Acessar</button>
+                                </a>
+                            </td>
                         </tr>
                     {% endfor %} 
                 </tbody>
