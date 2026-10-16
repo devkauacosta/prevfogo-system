@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from .models import Veiculo, DocMvVeiculo, DocOSVeiculo
 from .forms import VeiculoModelForm
 
@@ -33,3 +33,10 @@ class VeiculoCreate(CreateView):
             DocOSVeiculo.objects.create(veiculo=veiculo_instance, documento_os=os)
 
         return super().form_valid(form)
+
+
+class VeiculoDelete(DeleteView):
+    model = Veiculo
+    template_name = 'delete_veiculo.html'
+    context_object_name = 'veiculo'
+    success_url = '/veiculos/'
