@@ -22,17 +22,15 @@ class VeiculoCreate(CreateView):
     success_url = reverse_lazy('lista_veiculos')
 
     def form_valid(self, form):
-        veiculo_instance = form.save()
+        response = super().form_valid(form) 
 
-        lista_mvs = self.request.FILES.getlist('campo_mvs')
-        for mv in lista_mvs:
-            DocMvVeiculo.objects.create(veiculo=veiculo_instance, documento_mv=mv)
+        for arquivo in form.cleaned_data['campo_mvs']:
+            DocMvVeiculo.objects.create(veiculo=self.object, documento_mv=arquivo)
 
-        lista_os = self.request.FILES.getlist('campo_os')
-        for os in lista_os:
-            DocOSVeiculo.objects.create(veiculo=veiculo_instance, documento_os=os)
+        for arquivo in form.cleaned_data['campo_os']:
+            DocOSVeiculo.objects.create(veiculo=self.object, documento_os=arquivo)
 
-        return super().form_valid(form)
+        return response
 
 
 class VeiculoDelete(DeleteView):

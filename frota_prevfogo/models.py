@@ -20,7 +20,7 @@ class TipoVeiculo(models.Model):
 class Veiculo(models.Model):
     renavam = models.CharField(primary_key=True, unique=True, max_length=11)
     chassi = models.CharField(max_length=17, blank=True, null=True)
-    placa = models.CharField(blank=True, null=True)
+    placa = models.CharField(max_length=7, blank=True, null=True)
     marca = models.ForeignKey(Marca, on_delete=models.PROTECT, related_name='marca_veiculo', blank=True, null=True)
     modelo = models.CharField(max_length=300)
     ano = models.IntegerField(blank=True, null=True)
