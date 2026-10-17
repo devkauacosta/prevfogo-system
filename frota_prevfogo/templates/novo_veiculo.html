@@ -13,5 +13,54 @@
         {{ form.as_p }}
         <input type="submit" value="Salvar Tudo" class="btn btn-primary">
     </form>
+    <script>
+        function configurarAnexos(inputId) {
+            const input = document.getElementById(inputId);
+            const acumulador = new DataTransfer();
+
+            const lista = document.createElement('ul');
+            lista.style.listStyle = 'none';
+            lista.style.paddingLeft = '20px';
+            (input.closest('p') || input.parentElement).insertAdjacentElement('afterend', lista);
+
+            function desenharLista() {
+                lista.innerHTML = '';
+                Array.from(acumulador.files).forEach((arquivo, indice) => {
+                    const item = document.createElement('li');
+                    item.textContent = '📄 ' + arquivo.name + ' ';
+
+                    const botao = document.createElement('button');
+                    botao.type = 'button';
+                    botao.textContent = '✕';
+                    botao.onclick = () => remover(indice);
+
+                    item.appendChild(botao);
+                    lista.appendChild(item);
+                });
+            }
+
+            function remover(indice) {
+                acumulador.items.remove(indice);
+                input.files = acumulador.files;
+                desenharLista();
+            }
+
+            input.addEventListener('change', () => {
+                Array.from(input.files).forEach(arquivo => {
+                    const repetido = Array.from(acumulador.files).some(f =>
+                        f.name === arquivo.name &&
+                        f.size === arquivo.size &&
+                        f.lastModified === arquivo.lastModified
+                    );
+                    if (!repetido) acumulador.items.add(arquivo);
+                });
+                input.files = acumulador.files;
+                desenharLista();
+            });
+        }
+
+        configurarAnexos('id_campo_mvs');
+        configurarAnexos('id_campo_os');
+        </script>
 </body>
 </html>
