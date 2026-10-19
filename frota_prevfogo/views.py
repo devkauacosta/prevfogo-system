@@ -18,7 +18,7 @@ class VeiculoDetail(DetailView):
 class VeiculoCreate(CreateView):
     model = Veiculo
     form_class = VeiculoModelForm
-    template_name = 'novo_veiculo.html'
+    template_name = 'form_veiculo.html'
     success_url = reverse_lazy('lista_veiculos')
 
     def form_valid(self, form):
