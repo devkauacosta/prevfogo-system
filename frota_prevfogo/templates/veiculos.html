@@ -48,7 +48,11 @@
 <body>
     {% block content %}
     <h1>PrevFogo/IBAMA - Veículos</h1>
+    <a href="{% url 'veiculo_novo' %}">
+        <button type="button">Cadastrar Veículo</button>
+    </a>
         <main>
+            
             <table>
                 <thead>
                     <tr>
