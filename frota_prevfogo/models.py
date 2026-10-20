@@ -1,5 +1,5 @@
 from django.db import models
-
+import os
 
 class Marca(models.Model):
     id = models.AutoField(primary_key=True)
@@ -39,7 +39,13 @@ class DocMvVeiculo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='doc_mv')
     documento_mv = models.FileField(upload_to='veiculos/mvs')
 
+    def nome_arquivo(self):
+        return os.path.basename(self.documento_mv.name)
+
 
 class DocOSVeiculo(models.Model):
     veiculo = models.ForeignKey(Veiculo, on_delete=models.CASCADE, related_name='doc_os')
     documento_os = models.FileField(upload_to='veiculos/os')
+
+    def nome_arquivo(self):
+            return os.path.basename(self.documento_os.name)
