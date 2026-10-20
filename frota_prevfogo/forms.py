@@ -28,6 +28,8 @@ class VeiculoModelForm(forms.ModelForm):
         required=False
     )
 
+    renavam = forms.CharField(disabled=True)
+
     class Meta:
         model = Veiculo
         fields = [

@@ -26,7 +26,11 @@
             <p>{{ veiculo.data_revisao }}</p>
             <p>{{ veiculo.km_ultima_rev }}</p>
             <p>{{ veiculo.prox_revisao }}</p>
+            <iframe src="{{ veiculo.doc_mv }}"></iframe>
         </main>
+        <a href="{% url 'veiculo_update' veiculo.pk %}">
+            <button type="button">Editar</button>
+        </a>
         <a href="{% url 'veiculo_delete' veiculo.pk %}">
             <button type="button">Deletar</button>
         </a>

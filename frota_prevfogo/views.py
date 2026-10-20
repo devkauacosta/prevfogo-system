@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, DeleteView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from .models import Veiculo, DocMvVeiculo, DocOSVeiculo
 from .forms import VeiculoModelForm
 
@@ -38,3 +38,13 @@ class VeiculoDelete(DeleteView):
     template_name = 'delete_veiculo.html'
     context_object_name = 'veiculo'
     success_url = '/veiculos/'
+
+
+class VeiculoUpdate(UpdateView):
+    model = Veiculo
+    form_class = VeiculoModelForm
+    template_name = 'form_veiculo.html'
+
+    def get_success_url(self):
+        return reverse_lazy('detalhe_veiculo', kwargs={'pk': self.object.pk})
+
