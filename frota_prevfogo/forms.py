@@ -28,7 +28,11 @@ class VeiculoModelForm(forms.ModelForm):
         required=False
     )
 
-    renavam = forms.CharField(disabled=True)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if not self.instance._state.adding:
+            self.fields['renavam'].disabled = True
+
 
     class Meta:
         model = Veiculo
