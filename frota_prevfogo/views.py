@@ -46,5 +46,12 @@ class VeiculoUpdate(UpdateView):
     template_name = 'form_veiculo.html'
 
     def get_success_url(self):
-        return reverse_lazy('detalhe_veiculo', kwargs={'pk': self.object.pk})
+        return reverse_lazy('veiculo_detalhe', kwargs={'pk': self.object.pk})
 
+class MVDelete(DeleteView):
+    model = DocMvVeiculo
+    template_name = 'delete_mv.html'
+    success_url = 'atualizar_veiculo/<int:pk>/'
+
+    def get_success_url(self):
+        return reverse_lazy('veiculo_detalhe', kwargs={'pk': self.object.pk})

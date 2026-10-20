@@ -14,7 +14,10 @@
         {% if object %}
             <h2>MVs anexadas</h2>
             {% for doc in object.doc_mv.all %}
-                <a href="{{ doc.documento_mv.url }}">{{ doc.nome_arquivo }}</a><br>
+                <a href="{{ doc.documento_mv.url }}">{{ doc.nome_arquivo }} </a>
+                <a href="{% url 'mv_delete' doc.pk %}">
+                    <button type="button">Deletar</button>
+                </a><br>
             {% endfor %}
             <h2>OSs anexadas</h2>
             {% for doc in object.doc_os.all %}
