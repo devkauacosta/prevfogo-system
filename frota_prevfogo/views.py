@@ -54,3 +54,11 @@ class MVDelete(DeleteView):
 
     def get_success_url(self):
         return reverse('veiculo_update', kwargs={'pk': self.object.veiculo.pk})
+
+
+class OSDelete(DeleteView):
+    model = DocOSVeiculo
+    template_name = 'delete_os.html'
+
+    def get_success_url(self):
+        return reverse('veiculo_update', kwargs={'pk': self.object.veiculo.pk})

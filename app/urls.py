@@ -3,7 +3,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from frota_prevfogo.views import VeiculosListView, VeiculoCreate, VeiculoDetail, VeiculoDelete, VeiculoUpdate
-from frota_prevfogo.views import MVDelete
+from frota_prevfogo.views import MVDelete, OSDelete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -13,4 +13,5 @@ urlpatterns = [
     path('deletar_veiculo/<str:pk>/', VeiculoDelete.as_view(), name='veiculo_delete'),
     path('atualizar_veiculo/<str:pk>/', VeiculoUpdate.as_view(), name='veiculo_update'),
     path('veiculos/doc-mv/<int:pk>/remover', MVDelete.as_view(), name='mv_delete'),
+    path('veiculos/doc-os/<int:pk>/remover', OSDelete.as_view(), name='os_delete'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
