@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from .models import Veiculo, DocMvVeiculo, DocOSVeiculo
 from .forms import VeiculoModelForm
@@ -51,7 +51,6 @@ class VeiculoUpdate(UpdateView):
 class MVDelete(DeleteView):
     model = DocMvVeiculo
     template_name = 'delete_mv.html'
-    success_url = 'atualizar_veiculo/<int:pk>/'
 
     def get_success_url(self):
-        return reverse_lazy('veiculo_detalhe', kwargs={'pk': self.object.pk})
+        return reverse('veiculo_update', kwargs={'pk': self.object.veiculo.pk})
