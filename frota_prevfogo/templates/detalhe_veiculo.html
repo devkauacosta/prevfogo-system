@@ -28,6 +28,10 @@
             <p>{{ veiculo.km_ultima_rev }}</p>
             <p>{{ veiculo.prox_revisao }}</p>
             {% if object %}
+                <h3>MVs cadastradas: </h3>
+                {% for doc in object.doc_mv.all %}
+                    <a href="{{ doc.documento_mv.url }}">{{ doc.nome_arquivo }}</a>
+                {% endfor %}
                 <h3>Ordens de Serviço cadastradas: </h3>
                 {% for doc in object.doc_os.all %}
                     <a href="{{ doc.documento_os.url }}">{{ doc.nome_arquivo }}</a>
