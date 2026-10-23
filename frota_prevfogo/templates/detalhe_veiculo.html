@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +27,14 @@
             <p>{{ veiculo.data_revisao }}</p>
             <p>{{ veiculo.km_ultima_rev }}</p>
             <p>{{ veiculo.prox_revisao }}</p>
-            <iframe src="{{ veiculo.doc_mv }}"></iframe>
+            {% if object %}
+                <h3>Ordens de Serviço cadastradas: </h3>
+                {% for doc in object.doc_os.all %}
+                    <a href="{{ doc.documento_os.url }}">{{ doc.nome_arquivo }}</a>
+                {% endfor %}
+            {% else %}
+                <h3>Não há Ordens de Serviço cadastradas</h3>
+            {% endif %}
         </main>
         <a href="{% url 'veiculo_update' veiculo.pk %}">
             <button type="button">Editar</button>
