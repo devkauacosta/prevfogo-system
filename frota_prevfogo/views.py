@@ -45,6 +45,17 @@ class VeiculoUpdate(UpdateView):
     form_class = VeiculoModelForm
     template_name = 'form_veiculo.html'
 
+    def form_valid(self, form):
+            response = super().form_valid(form) 
+    
+            for arquivo in form.cleaned_data['campo_mvs']:
+                DocMvVeiculo.objects.create(veiculo=self.object, documento_mv=arquivo)
+    
+            for arquivo in form.cleaned_data['campo_os']:
+                DocOSVeiculo.objects.create(veiculo=self.object, documento_os=arquivo)
+    
+            return response
+
     def get_success_url(self):
         return reverse_lazy('veiculo_detalhe', kwargs={'pk': self.object.pk})
 
