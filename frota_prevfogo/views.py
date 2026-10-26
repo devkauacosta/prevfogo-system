@@ -10,6 +10,14 @@ class VeiculosListView(ListView):
     context_object_name = 'veiculos'
 
 
+    def get_queryset(self):
+        veiculos = super().get_queryset().order_by('renavam')
+        search = self.request.GET.get('search')
+        if search:
+            veiculos = veiculos.filter(renavam__contains=search)
+        return veiculos
+
+
 class VeiculoDetail(DetailView):
     model = Veiculo
     template_name = 'detalhe_veiculo.html'

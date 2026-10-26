@@ -51,6 +51,11 @@
     <a href="{% url 'veiculo_novo' %}">
         <button type="button">Cadastrar Veículo</button>
     </a>
+    <hr>
+    <form method="GET" action="{% url 'lista_veiculos' %}">
+        <input type="text" name="search" placeholder="Busca Renavam...">
+        <button type="submit">Buscar</button>
+    </form>
         <main>
             
             <table>
