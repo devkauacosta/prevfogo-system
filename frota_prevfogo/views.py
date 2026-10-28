@@ -3,6 +3,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from .models import Veiculo, DocMvVeiculo, DocOSVeiculo
 from .forms import VeiculoModelForm
+from .filters import VeiculoFilter
 
 class VeiculosListView(ListView):
     model = Veiculo
@@ -11,11 +12,15 @@ class VeiculosListView(ListView):
 
 
     def get_queryset(self):
-        veiculos = super().get_queryset().order_by('renavam')
-        search = self.request.GET.get('search')
-        if search:
-            veiculos = veiculos.filter(renavam__contains=search)
-        return veiculos
+        veiculos = super().get_queryset()
+        self.filter = VeiculoFilter(self.request.GET, veiculos)
+        return self.filter.qs
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filtro'] = self.filter
+        return context
 
 
 class VeiculoDetail(DetailView):
