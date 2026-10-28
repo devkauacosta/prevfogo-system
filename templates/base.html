@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Frota PrevFogo/IBAMA{% endblock %}</title>
+</head>
+<body>
+    
+    <h1>PrevFogo/IBAMA - Veículos</h1>
+    <a href="{% url 'veiculo_novo' %}">Cadastrar Veículo</a>
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
