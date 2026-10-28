@@ -1,0 +1,682 @@
+[
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000001",
+    "fields": {
+      "chassi": "9BWZZZ377VT004251",
+      "placa": "ABC1D23",
+      "marca": 1,
+      "modelo": "Volkswagen Gol 1.0",
+      "ano": 2020,
+      "tipo": 4,
+      "patrimonio": "PAT-0001",
+      "quilometragem_atual": 45200,
+      "data_revisao": "2026-03-15",
+      "km_ultima_rev": 40000,
+      "prox_revisao": "2026-09-15"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000002",
+    "fields": {
+      "chassi": "9BGKS48U0KG123456",
+      "placa": "DEF2G34",
+      "marca": 2,
+      "modelo": "Chevrolet Onix 1.0",
+      "ano": 2019,
+      "tipo": 4,
+      "patrimonio": "PAT-0002",
+      "quilometragem_atual": 68300,
+      "data_revisao": "2026-02-10",
+      "km_ultima_rev": 60000,
+      "prox_revisao": "2026-08-10"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000003",
+    "fields": {
+      "chassi": "9BD15822AD1234567",
+      "placa": "HIJ3K45",
+      "marca": 3,
+      "modelo": "Fiat Uno Way",
+      "ano": 2018,
+      "tipo": 4,
+      "patrimonio": "PAT-0003",
+      "quilometragem_atual": 91200,
+      "data_revisao": "2026-01-20",
+      "km_ultima_rev": 85000,
+      "prox_revisao": "2026-07-20"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000004",
+    "fields": {
+      "chassi": "9BFZK53A9BB123456",
+      "placa": "KLM4N56",
+      "marca": 4,
+      "modelo": "Ford Ranger XLS",
+      "ano": 2021,
+      "tipo": 5,
+      "patrimonio": "PAT-0004",
+      "quilometragem_atual": 38700,
+      "data_revisao": "2026-04-05",
+      "km_ultima_rev": 30000,
+      "prox_revisao": "2026-10-05"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000005",
+    "fields": {
+      "chassi": "9BM958096PB123456",
+      "placa": "OPQ5R67",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Atego 1719",
+      "ano": 2022,
+      "tipo": 6,
+      "patrimonio": "PAT-0005",
+      "quilometragem_atual": 55200,
+      "data_revisao": "2026-05-12",
+      "km_ultima_rev": 50000,
+      "prox_revisao": "2026-11-12"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000006",
+    "fields": {
+      "chassi": "93XJRKB8WPC123456",
+      "placa": "STU6V78",
+      "marca": 6,
+      "modelo": "Mitsubishi L200 Triton",
+      "ano": 2023,
+      "tipo": 5,
+      "patrimonio": "PAT-0006",
+      "quilometragem_atual": 24500,
+      "data_revisao": "2026-06-01",
+      "km_ultima_rev": 20000,
+      "prox_revisao": "2026-12-01"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000007",
+    "fields": {
+      "chassi": "9BWZZZ377VT004252",
+      "placa": "VWX7Y89",
+      "marca": 1,
+      "modelo": "Volkswagen Voyage",
+      "ano": 2017,
+      "tipo": 4,
+      "patrimonio": "PAT-0007",
+      "quilometragem_atual": 108500,
+      "data_revisao": "2026-02-18",
+      "km_ultima_rev": 100000,
+      "prox_revisao": "2026-08-18"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000008",
+    "fields": {
+      "chassi": "9BGKS48U0KG123457",
+      "placa": "YZA8B90",
+      "marca": 2,
+      "modelo": "Chevrolet S10 LT",
+      "ano": 2020,
+      "tipo": 5,
+      "patrimonio": "PAT-0008",
+      "quilometragem_atual": 62300,
+      "data_revisao": "2026-03-22",
+      "km_ultima_rev": 60000,
+      "prox_revisao": "2026-09-22"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000009",
+    "fields": {
+      "chassi": "9BD15822AD1234568",
+      "placa": "BCD9E12",
+      "marca": 3,
+      "modelo": "Fiat Strada Freedom",
+      "ano": 2022,
+      "tipo": 5,
+      "patrimonio": "PAT-0009",
+      "quilometragem_atual": 31500,
+      "data_revisao": "2026-04-14",
+      "km_ultima_rev": 30000,
+      "prox_revisao": "2026-10-14"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000010",
+    "fields": {
+      "chassi": "9BFZK53A9BB123457",
+      "placa": "EFG0H23",
+      "marca": 4,
+      "modelo": "Ford Cargo 816",
+      "ano": 2016,
+      "tipo": 6,
+      "patrimonio": "PAT-0010",
+      "quilometragem_atual": 154000,
+      "data_revisao": "2026-01-12",
+      "km_ultima_rev": 150000,
+      "prox_revisao": "2026-07-12"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000011",
+    "fields": {
+      "chassi": "9BM958096PB123457",
+      "placa": "HIJ1K24",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Sprinter 416",
+      "ano": 2021,
+      "tipo": 5,
+      "patrimonio": "PAT-0011",
+      "quilometragem_atual": 48700,
+      "data_revisao": "2026-05-08",
+      "km_ultima_rev": 45000,
+      "prox_revisao": "2026-11-08"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000012",
+    "fields": {
+      "chassi": "93XJRKB8WPC123457",
+      "placa": "LMN2O35",
+      "marca": 6,
+      "modelo": "Mitsubishi L200 Outdoor",
+      "ano": 2019,
+      "tipo": 5,
+      "patrimonio": "PAT-0012",
+      "quilometragem_atual": 79400,
+      "data_revisao": "2026-02-25",
+      "km_ultima_rev": 75000,
+      "prox_revisao": "2026-08-25"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000013",
+    "fields": {
+      "chassi": "9BWZZZ377VT004253",
+      "placa": "PQR3S46",
+      "marca": 1,
+      "modelo": "Volkswagen Polo Track",
+      "ano": 2024,
+      "tipo": 4,
+      "patrimonio": "PAT-0013",
+      "quilometragem_atual": 12500,
+      "data_revisao": "2026-06-10",
+      "km_ultima_rev": 10000,
+      "prox_revisao": "2026-12-10"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000014",
+    "fields": {
+      "chassi": "9BGKS48U0KG123458",
+      "placa": "TUV4W57",
+      "marca": 2,
+      "modelo": "Chevrolet Spin LT",
+      "ano": 2021,
+      "tipo": 4,
+      "patrimonio": "PAT-0014",
+      "quilometragem_atual": 56200,
+      "data_revisao": "2026-03-09",
+      "km_ultima_rev": 50000,
+      "prox_revisao": "2026-09-09"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000015",
+    "fields": {
+      "chassi": "9BD15822AD1234569",
+      "placa": "WXY5Z68",
+      "marca": 3,
+      "modelo": "Fiat Ducato Cargo",
+      "ano": 2020,
+      "tipo": 5,
+      "patrimonio": "PAT-0015",
+      "quilometragem_atual": 71800,
+      "data_revisao": "2026-04-18",
+      "km_ultima_rev": 70000,
+      "prox_revisao": "2026-10-18"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000016",
+    "fields": {
+      "chassi": "9BFZK53A9BB123458",
+      "placa": "ZAB6C79",
+      "marca": 4,
+      "modelo": "Ford F-4000",
+      "ano": 2018,
+      "tipo": 6,
+      "patrimonio": "PAT-0016",
+      "quilometragem_atual": 132000,
+      "data_revisao": "2026-02-04",
+      "km_ultima_rev": 125000,
+      "prox_revisao": "2026-08-04"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000017",
+    "fields": {
+      "chassi": "9BM958096PB123458",
+      "placa": "CDE7F80",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Accelo 1016",
+      "ano": 2023,
+      "tipo": 6,
+      "patrimonio": "PAT-0017",
+      "quilometragem_atual": 28600,
+      "data_revisao": "2026-05-20",
+      "km_ultima_rev": 25000,
+      "prox_revisao": "2026-11-20"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000018",
+    "fields": {
+      "chassi": "93XJRKB8WPC123458",
+      "placa": "FGH8I91",
+      "marca": 6,
+      "modelo": "Mitsubishi L200 Triton Sport",
+      "ano": 2022,
+      "tipo": 5,
+      "patrimonio": "PAT-0018",
+      "quilometragem_atual": 41200,
+      "data_revisao": "2026-06-05",
+      "km_ultima_rev": 40000,
+      "prox_revisao": "2026-12-05"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000019",
+    "fields": {
+      "chassi": "9BWZZZ377VT004254",
+      "placa": "IJK9L02",
+      "marca": 1,
+      "modelo": "Volkswagen Delivery 9.170",
+      "ano": 2021,
+      "tipo": 6,
+      "patrimonio": "PAT-0019",
+      "quilometragem_atual": 85300,
+      "data_revisao": "2026-03-27",
+      "km_ultima_rev": 80000,
+      "prox_revisao": "2026-09-27"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000020",
+    "fields": {
+      "chassi": "9BGKS48U0KG123459",
+      "placa": "LMN0M13",
+      "marca": 2,
+      "modelo": "Chevrolet Montana LT",
+      "ano": 2023,
+      "tipo": 5,
+      "patrimonio": "PAT-0020",
+      "quilometragem_atual": 19800,
+      "data_revisao": "2026-06-18",
+      "km_ultima_rev": 15000,
+      "prox_revisao": "2026-12-18"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000021",
+    "fields": {
+      "chassi": "9BWZZZ377VT004255",
+      "placa": "MNO1P24",
+      "marca": 1,
+      "modelo": "Volkswagen Saveiro Robust",
+      "ano": 2022,
+      "tipo": 5,
+      "patrimonio": "PAT-0021",
+      "quilometragem_atual": 35400,
+      "data_revisao": "2026-04-02",
+      "km_ultima_rev": 30000,
+      "prox_revisao": "2026-10-02"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000022",
+    "fields": {
+      "chassi": "9BGKS48U0KG123460",
+      "placa": "PQR2S35",
+      "marca": 2,
+      "modelo": "Chevrolet Tracker LT",
+      "ano": 2022,
+      "tipo": 4,
+      "patrimonio": "PAT-0022",
+      "quilometragem_atual": 27600,
+      "data_revisao": "2026-05-11",
+      "km_ultima_rev": 25000,
+      "prox_revisao": "2026-11-11"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000023",
+    "fields": {
+      "chassi": "9BD15822AD1234570",
+      "placa": "STU3V46",
+      "marca": 3,
+      "modelo": "Fiat Fiorino Endurance",
+      "ano": 2021,
+      "tipo": 5,
+      "patrimonio": "PAT-0023",
+      "quilometragem_atual": 49800,
+      "data_revisao": "2026-02-14",
+      "km_ultima_rev": 45000,
+      "prox_revisao": "2026-08-14"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000024",
+    "fields": {
+      "chassi": "9BFZK53A9BB123459",
+      "placa": "VWX4Y57",
+      "marca": 4,
+      "modelo": "Ford Transit",
+      "ano": 2020,
+      "tipo": 5,
+      "patrimonio": "PAT-0024",
+      "quilometragem_atual": 67200,
+      "data_revisao": "2026-03-06",
+      "km_ultima_rev": 65000,
+      "prox_revisao": "2026-09-06"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000025",
+    "fields": {
+      "chassi": "9BM958096PB123459",
+      "placa": "YZA5B68",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Atego 2426",
+      "ano": 2020,
+      "tipo": 6,
+      "patrimonio": "PAT-0025",
+      "quilometragem_atual": 117500,
+      "data_revisao": "2026-01-28",
+      "km_ultima_rev": 110000,
+      "prox_revisao": "2026-07-28"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000026",
+    "fields": {
+      "chassi": "93XJRKB8WPC123459",
+      "placa": "BCD6E79",
+      "marca": 6,
+      "modelo": "Mitsubishi Pajero Sport",
+      "ano": 2021,
+      "tipo": 4,
+      "patrimonio": "PAT-0026",
+      "quilometragem_atual": 56300,
+      "data_revisao": "2026-04-25",
+      "km_ultima_rev": 55000,
+      "prox_revisao": "2026-10-25"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000027",
+    "fields": {
+      "chassi": "9BWZZZ377VT004256",
+      "placa": "EFG7H80",
+      "marca": 1,
+      "modelo": "Volkswagen T-Cross",
+      "ano": 2024,
+      "tipo": 4,
+      "patrimonio": "PAT-0027",
+      "quilometragem_atual": 14200,
+      "data_revisao": "2026-06-12",
+      "km_ultima_rev": 10000,
+      "prox_revisao": "2026-12-12"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000028",
+    "fields": {
+      "chassi": "9BGKS48U0KG123461",
+      "placa": "HIJ8K91",
+      "marca": 2,
+      "modelo": "Chevrolet Trailblazer",
+      "ano": 2021,
+      "tipo": 4,
+      "patrimonio": "PAT-0028",
+      "quilometragem_atual": 61800,
+      "data_revisao": "2026-03-17",
+      "km_ultima_rev": 60000,
+      "prox_revisao": "2026-09-17"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000029",
+    "fields": {
+      "chassi": "9BD15822AD1234571",
+      "placa": "KLM9N02",
+      "marca": 3,
+      "modelo": "Fiat Toro Freedom",
+      "ano": 2023,
+      "tipo": 5,
+      "patrimonio": "PAT-0029",
+      "quilometragem_atual": 22600,
+      "data_revisao": "2026-05-03",
+      "km_ultima_rev": 20000,
+      "prox_revisao": "2026-11-03"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000030",
+    "fields": {
+      "chassi": "9BFZK53A9BB123460",
+      "placa": "OPQ0R13",
+      "marca": 4,
+      "modelo": "Ford Cargo 1119",
+      "ano": 2019,
+      "tipo": 6,
+      "patrimonio": "PAT-0030",
+      "quilometragem_atual": 143500,
+      "data_revisao": "2026-02-21",
+      "km_ultima_rev": 140000,
+      "prox_revisao": "2026-08-21"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000031",
+    "fields": {
+      "chassi": "9BM958096PB123460",
+      "placa": "STU1V24",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Sprinter 517",
+      "ano": 2024,
+      "tipo": 5,
+      "patrimonio": "PAT-0031",
+      "quilometragem_atual": 9800,
+      "data_revisao": "2026-06-20",
+      "km_ultima_rev": 5000,
+      "prox_revisao": "2026-12-20"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000032",
+    "fields": {
+      "chassi": "93XJRKB8WPC123460",
+      "placa": "VWX2Y35",
+      "marca": 6,
+      "modelo": "Mitsubishi L200 Triton Outdoor",
+      "ano": 2020,
+      "tipo": 5,
+      "patrimonio": "PAT-0032",
+      "quilometragem_atual": 74200,
+      "data_revisao": "2026-01-16",
+      "km_ultima_rev": 70000,
+      "prox_revisao": "2026-07-16"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000033",
+    "fields": {
+      "chassi": "9BWZZZ377VT004257",
+      "placa": "YZA3B46",
+      "marca": 1,
+      "modelo": "Volkswagen Virtus",
+      "ano": 2023,
+      "tipo": 4,
+      "patrimonio": "PAT-0033",
+      "quilometragem_atual": 28100,
+      "data_revisao": "2026-04-30",
+      "km_ultima_rev": 25000,
+      "prox_revisao": "2026-10-30"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000034",
+    "fields": {
+      "chassi": "9BGKS48U0KG123462",
+      "placa": "BCD4E57",
+      "marca": 2,
+      "modelo": "Chevrolet Spin Premier",
+      "ano": 2024,
+      "tipo": 4,
+      "patrimonio": "PAT-0034",
+      "quilometragem_atual": 8700,
+      "data_revisao": "2026-06-08",
+      "km_ultima_rev": 5000,
+      "prox_revisao": "2026-12-08"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000035",
+    "fields": {
+      "chassi": "9BD15822AD1234572",
+      "placa": "EFG5H68",
+      "marca": 3,
+      "modelo": "Fiat Ducato Minibus",
+      "ano": 2022,
+      "tipo": 5,
+      "patrimonio": "PAT-0035",
+      "quilometragem_atual": 43200,
+      "data_revisao": "2026-03-12",
+      "km_ultima_rev": 40000,
+      "prox_revisao": "2026-09-12"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000036",
+    "fields": {
+      "chassi": "9BFZK53A9BB123461",
+      "placa": "HIJ6K79",
+      "marca": 4,
+      "modelo": "Ford Cargo 2429",
+      "ano": 2020,
+      "tipo": 6,
+      "patrimonio": "PAT-0036",
+      "quilometragem_atual": 126800,
+      "data_revisao": "2026-04-08",
+      "km_ultima_rev": 120000,
+      "prox_revisao": "2026-10-08"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000037",
+    "fields": {
+      "chassi": "9BM958096PB123461",
+      "placa": "KLM7N80",
+      "marca": 5,
+      "modelo": "Mercedes-Benz Atego 3030",
+      "ano": 2022,
+      "tipo": 6,
+      "patrimonio": "PAT-0037",
+      "quilometragem_atual": 69300,
+      "data_revisao": "2026-05-25",
+      "km_ultima_rev": 65000,
+      "prox_revisao": "2026-11-25"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000038",
+    "fields": {
+      "chassi": "93XJRKB8WPC123461",
+      "placa": "OPQ8R91",
+      "marca": 6,
+      "modelo": "Mitsubishi L200 Triton Savana",
+      "ano": 2021,
+      "tipo": 5,
+      "patrimonio": "PAT-0038",
+      "quilometragem_atual": 58200,
+      "data_revisao": "2026-02-28",
+      "km_ultima_rev": 55000,
+      "prox_revisao": "2026-08-28"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000039",
+    "fields": {
+      "chassi": "9BWZZZ377VT004258",
+      "placa": "STU9V02",
+      "marca": 1,
+      "modelo": "Volkswagen Amarok",
+      "ano": 2022,
+      "tipo": 5,
+      "patrimonio": "PAT-0039",
+      "quilometragem_atual": 47100,
+      "data_revisao": "2026-03-31",
+      "km_ultima_rev": 45000,
+      "prox_revisao": "2026-09-30"
+    }
+  },
+  {
+    "model": "frota_prevfogo.veiculo",
+    "pk": "10000000040",
+    "fields": {
+      "chassi": "9BGKS48U0KG123463",
+      "placa": "VWX0Y13",
+      "marca": 2,
+      "modelo": "Chevrolet D20",
+      "ano": 1995,
+      "tipo": 6,
+      "patrimonio": "PAT-0040",
+      "quilometragem_atual": 245000,
+      "data_revisao": "2026-01-08",
+      "km_ultima_rev": 240000,
+      "prox_revisao": "2026-07-08"
+    }
+  }
+]
