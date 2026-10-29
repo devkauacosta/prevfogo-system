@@ -1,61 +1,133 @@
 {% extends 'base.html' %}
 
-<head>
-    <title>Veiculos</title>
-</head>
-<body>
-    {% block content %}
-    <h2>Total de veiculos cadastrados: {{ veiculos.count }}</h2>
-    <form method="get">
-        Marca: {{ filtro.form.marca }}
-        Tipo: {{ filtro.form.tipo }}
-        <button type="submit">Filtrar</button>
-        <a href="{% url 'lista_veiculos' %}">Limpar</a>
-    </form>
-        <main>
-            <table>
-                <thead>
+{% block title %}Veículos - PrevFogo/IBAMA{% endblock %}
+
+{% block content %}
+<div class="space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pb-4 border-b border-gray-200">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight text-black">Controle de Veículos</h1>
+            <p class="text-xs text-gray-500 mt-0.5">
+                Total de veículos cadastrados: <span class="font-bold text-black">{{ veiculos.count }}</span>
+            </p>
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+        <form method="get" class="flex flex-wrap items-center gap-4 text-xs">
+            <div class="flex items-center gap-2">
+                <label for="id_marca" class="font-medium text-gray-700">Marca:</label>
+                <div class="[&>select]:px-3 [&>select]:py-1.5 [&>select]:border [&>select]:border-gray-300 [&>select]:rounded-lg [&>select]:bg-white [&>select]:text-xs [&>select]:focus:outline-none [&>select]:focus:ring-1 [&>select]:focus:ring-black">
+                    {{ filtro.form.marca }}
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <label for="id_tipo" class="font-medium text-gray-700">Tipo:</label>
+                <div class="[&>select]:px-3 [&>select]:py-1.5 [&>select]:border [&>select]:border-gray-300 [&>select]:rounded-lg [&>select]:bg-white [&>select]:text-xs [&>select]:focus:outline-none [&>select]:focus:ring-1 [&>select]:focus:ring-black">
+                    {{ filtro.form.tipo }}
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2 ml-auto">
+                <button 
+                    type="submit" 
+                    class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-black hover:bg-gray-800 text-white rounded-lg text-xs font-semibold transition duration-150 shadow-sm"
+                >
+                    <i data-lucide="filter" class="w-3.5 h-3.5"></i>
+                    Filtrar
+                </button>
+                <a 
+                    href="{% url 'lista_veiculos' %}" 
+                    class="px-3 py-1.5 border border-gray-300 text-gray-600 hover:text-black hover:bg-gray-50 rounded-lg text-xs font-medium transition no-underline"
+                >
+                    Limpar
+                </a>
+            </div>
+
+        </form>
+    </div>
+    <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+        <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs text-gray-700 border-collapse min-w-[1200px]">
+                <thead class="bg-gray-50 text-gray-600 font-semibold uppercase text-[11px] tracking-wider border-b border-gray-200">
                     <tr>
-                        <th>Renavam</th>
-                        <th>Chassi</th>
-                        <th>Placa</th>
-                        <th>Marca</th>
-                        <th>Modelo</th>
-                        <th>Ano</th>
-                        <th>Tipo</th>
-                        <th>Patrimônio</th>
-                        <th>Km atual</th>
-                        <th>Última revisão</th>
-                        <th>Km última revisão</th>
-                        <th>Próxima revisão</th>
-                        <th>Detalhes</th>
+                        <th scope="col" class="py-3.5 px-3 pl-4 border-r border-gray-100">Renavam</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Chassi</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Placa</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Marca</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Modelo</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Ano</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Tipo</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Patrimônio</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Km atual</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Última revisão</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Km última rev.</th>
+                        <th scope="col" class="py-3.5 px-3 border-r border-gray-100">Próxima revisão</th>
+                        <th scope="col" class="py-3.5 px-4 text-center font-bold text-gray-800">Detalhes</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="divide-y divide-gray-200 font-normal">
                     {% for veiculo in veiculos %}
-                        <tr>
-                            <td>{{ veiculo.renavam }}</td>
-                            <td>{{ veiculo.chassi }}</td>
-                            <td>{{ veiculo.placa }}</td>
-                            <td>{{ veiculo.marca }}</td>
-                            <td>{{ veiculo.modelo }}</td>
-                            <td>{{ veiculo.ano }}</td>
-                            <td>{{ veiculo.tipo }}</td>
-                            <td>{{ veiculo.patrimonio }}</td>
-                            <td>{{ veiculo.quilometragem_atual }}</td>
-                            <td>{{ veiculo.data_revisao }}</td>
-                            <td>{{ veiculo.km_ultima_rev }}</td>
-                            <td>{{ veiculo.prox_revisao }}</td>
-                            <td>
-                                <a href="{% url 'veiculo_detalhe' veiculo.pk %}">
-                                    <button type="button">Acessar</button>
+                        <tr class="hover:bg-gray-50/80 transition duration-150 text-xs">
+                            <td class="py-3 px-3 pl-4 font-mono font-medium text-gray-900 border-r border-gray-100">
+                                {{ veiculo.renavam }}
+                            </td>
+                            <td class="py-3 px-3 font-mono text-gray-600 border-r border-gray-100">
+                                {{ veiculo.chassi }}
+                            </td>
+                            <td class="py-3 px-3 font-mono font-bold text-gray-900 border-r border-gray-100">
+                                <span class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200">
+                                    {{ veiculo.placa }}
+                                </span>
+                            </td>
+                            <td class="py-3 px-3 font-medium text-gray-900 border-r border-gray-100">
+                                {{ veiculo.marca }}
+                            </td>
+                            <td class="py-3 px-3 font-medium text-gray-900 border-r border-gray-100">
+                                {{ veiculo.modelo }}
+                            </td>
+                            <td class="py-3 px-3 text-gray-600 border-r border-gray-100">
+                                {{ veiculo.ano }}
+                            </td>
+                            <td class="py-3 px-3 text-gray-600 border-r border-gray-100">
+                                {{ veiculo.tipo }}
+                            </td>
+                            <td class="py-3 px-3 font-mono text-gray-700 border-r border-gray-100">
+                                {{ veiculo.patrimonio }}
+                            </td>
+                            <td class="py-3 px-3 font-mono text-gray-900 border-r border-gray-100">
+                                {{ veiculo.quilometragem_atual }} km
+                            </td>
+                            <td class="py-3 px-3 text-gray-600 border-r border-gray-100 whitespace-nowrap">
+                                {{ veiculo.data_revisao|date:"d/m/Y" }}
+                            </td>
+
+                            <td class="py-3 px-3 font-mono text-gray-600 border-r border-gray-100">
+                                {{ veiculo.km_ultima_rev }} km
+                            </td>
+                            <td class="py-3 px-3 text-gray-600 border-r border-gray-100 whitespace-nowrap">
+                                {{ veiculo.prox_revisao|date:"d/m/Y" }}
+                            </td>
+                            <td class="py-3 px-4 text-center whitespace-nowrap">
+                                <a 
+                                    href="{% url 'veiculo_detalhe' veiculo.pk %}" 
+                                    class="inline-flex items-center gap-1 bg-white hover:bg-black hover:text-white text-gray-900 border border-gray-300 font-medium px-3 py-1 rounded-lg text-xs transition duration-150 shadow-sm no-underline"
+                                >
+                                    <span>Acessar</span>
+                                    <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
                                 </a>
                             </td>
                         </tr>
-                    {% endfor %} 
+                    {% empty %}
+                        <tr>
+                            <td colspan="13" class="py-12 text-center text-gray-500">
+                                <i data-lucide="car-front" class="w-10 h-10 text-gray-300 mx-auto mb-2"></i>
+                                <p class="text-sm font-medium">Nenhum veículo encontrado com os filtros aplicados.</p>
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
-        </main>
-    {% endblock %}
-</body>
-</html>
+        </div>
+    </div>
+</div>
+{% endblock %}
