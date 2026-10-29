@@ -1,89 +1,207 @@
 {% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novo Veículo</title>
-</head>
-<body>
+{% block title %}
+    {% if object %}
+        Editar Veículo: {{ object.modelo }} - {{ object.placa }}
+    {% else %}
+        Cadastrar Novo Veículo
+    {% endif %}
+{% endblock %}
+
 {% block content %}
-    <h2>Cadastrar Novo Veículo</h2>
+<div class="max-w-4xl mx-auto space-y-6">
 
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {% if object %}
-            <h2>MVs anexadas</h2>
-            {% for doc in object.doc_mv.all %}
-                <a href="{{ doc.documento_mv.url }}">{{ doc.nome_arquivo }} </a>
-                <a href="{% url 'mv_delete' doc.pk %}">
-                    <button type="button">Deletar</button>
-                </a><br>
-            {% endfor %}
-            <h2>OSs anexadas</h2>
-            {% for doc in object.doc_os.all %}
-                <a href="{{ doc.documento_os.url }}">{{ doc.nome_arquivo }}</a>
-                <a href="{% url 'os_delete' doc.pk %}">
-                    <button type="button">Deletar</button>
-                </a><br><br>
-            {% endfor %}
-        {% endif %}
-        <input type="submit" value="Salvar Tudo" class="btn btn-primary">
-        <a href="{% url 'lista_veiculos' %}">
-            <button type="button">Cancelar</button>
+    <div class="flex items-center justify-between pb-4 border-b border-gray-200">
+        <div>
+            <h1 class="text-xl font-bold tracking-tight text-gray-900">
+                {% if object %}
+                    Editar Veículo
+                {% else %}
+                    Cadastrar Novo Veículo
+                {% endif %}
+            </h1>
+            <p class="text-xs text-gray-500 mt-1">
+                {% if object %}
+                    Atualize as informações do veículo <span class="font-bold text-gray-800">{{ object.marca }} {{ object.modelo }}</span> ({{ object.placa }})
+                {% else %}
+                    Preencha os campos abaixo para adicionar um veículo à frota do PrevFogo/IBAMA.
+                {% endif %}
+            </p>
+        </div>
+
+        <a 
+            href="{% url 'lista_veiculos' %}" 
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-xs font-semibold rounded-lg transition duration-150 shadow-sm no-underline"
+        >
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Voltar</span>
         </a>
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4 text-xs
+            [&>p]:flex [&>p]:flex-col [&>p]:gap-1.5
+            [&_label]:font-semibold [&_label]:text-gray-700
+            [&_input[type=text]]:px-3 [&_input[type=text]]:py-2 [&_input[type=text]]:border [&_input[type=text]]:border-gray-300 [&_input[type=text]]:rounded-lg [&_input[type=text]]:focus:outline-none [&_input[type=text]]:focus:ring-1 [&_input[type=text]]:focus:ring-black
+            [&_input[type=number]]:px-3 [&_input[type=number]]:py-2 [&_input[type=number]]:border [&_input[type=number]]:border-gray-300 [&_input[type=number]]:rounded-lg [&_input[type=number]]:focus:outline-none [&_input[type=number]]:focus:ring-1 [&_input[type=number]]:focus:ring-black
+            [&_input[type=date]]:px-3 [&_input[type=date]]:py-2 [&_input[type=date]]:border [&_input[type=date]]:border-gray-300 [&_input[type=date]]:rounded-lg [&_input[type=date]]:focus:outline-none [&_input[type=date]]:focus:ring-1 [&_input[type=date]]:focus:ring-black
+            [&_input[type=file]]:p-2 [&_input[type=file]]:border [&_input[type=file]]:border-gray-200 [&_input[type=file]]:rounded-lg [&_input[type=file]]:bg-gray-50 [&_input[type=file]]:text-gray-600
+            [&_select]:px-3 [&_select]:py-2 [&_select]:border [&_select]:border-gray-300 [&_select]:rounded-lg [&_select]:bg-white [&_select]:focus:outline-none [&_select]:focus:ring-1 [&_select]:focus:ring-black
+            [&_textarea]:px-3 [&_textarea]:py-2 [&_textarea]:border [&_textarea]:border-gray-300 [&_textarea]:rounded-lg [&_textarea]:focus:outline-none [&_textarea]:focus:ring-1 [&_textarea]:focus:ring-black
+            [&_.helptext]:text-[11px] [&_.helptext]:text-gray-400 [&_.helptext]:font-normal"
+        >
+            {{ form.as_p }}
+        </div>
+        {% if object %}
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-6">
+                <h2 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-3 flex items-center gap-2">
+                    <i data-lucide="paperclip" class="w-4 h-4 text-gray-700"></i>
+                    Documentos Existentes Anexados
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-semibold text-gray-700 flex items-center gap-2">
+                            <i data-lucide="file-check-2" class="w-4 h-4 text-gray-500"></i>
+                            MVs Anexadas
+                        </h3>
+                        <div class="space-y-2">
+                            {% for doc in object.doc_mv.all %}
+                                <div class="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-xs">
+                                    <a 
+                                        href="{{ doc.documento_mv.url }}" 
+                                        target="_blank" 
+                                        class="font-medium text-gray-900 hover:underline truncate max-w-[200px]"
+                                    >
+                                        {{ doc.nome_arquivo }}
+                                    </a>
+                                    <a 
+                                        href="{% url 'mv_delete' doc.pk %}"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-[11px] font-semibold rounded transition no-underline shrink-0"
+                                    >
+                                        <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                        Deletar
+                                    </a>
+                                </div>
+                            {% empty %}
+                                <p class="text-xs text-gray-400 italic bg-gray-50 p-3 rounded-lg border border-dashed border-gray-200">
+                                    Nenhuma MV anexada previamente.
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <h3 class="text-xs font-semibold text-gray-700 flex items-center gap-2">
+                            <i data-lucide="clipboard-list" class="w-4 h-4 text-gray-500"></i>
+                            OSs Anexadas
+                        </h3>
+                        <div class="space-y-2">
+                            {% for doc in object.doc_os.all %}
+                                <div class="flex items-center justify-between p-2.5 bg-gray-50 border border-gray-200 rounded-lg text-xs">
+                                    <a 
+                                        href="{{ doc.documento_os.url }}" 
+                                        target="_blank" 
+                                        class="font-medium text-gray-900 hover:underline truncate max-w-[200px]"
+                                    >
+                                        {{ doc.nome_arquivo }}
+                                    </a>
+                                    <a 
+                                        href="{% url 'os_delete' doc.pk %}"
+                                        class="inline-flex items-center gap-1 px-2.5 py-1 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-[11px] font-semibold rounded transition no-underline shrink-0"
+                                    >
+                                        <i data-lucide="trash-2" class="w-3 h-3"></i>
+                                        Deletar
+                                    </a>
+                                </div>
+                            {% empty %}
+                                <p class="text-xs text-gray-400 italic bg-gray-50 p-3 rounded-lg border border-dashed border-gray-200">
+                                    Nenhuma OS anexada previamente.
+                                </p>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        {% endif %}
+        <div class="flex items-center justify-end gap-3 pt-4 border-t border-gray-200">
+            <a 
+                href="{% url 'lista_veiculos' %}" 
+                class="px-4 py-2 border border-gray-300 text-gray-700 bg-white hover:bg-gray-100 rounded-lg text-xs font-semibold transition shadow-sm no-underline"
+            >
+                Cancelar
+            </a>
+            <button 
+                type="submit" 
+                class="inline-flex items-center gap-2 px-5 py-2 bg-black hover:bg-gray-800 text-white rounded-lg text-xs font-semibold transition shadow-sm"
+            >
+                <i data-lucide="check" class="w-4 h-4"></i>
+                Salvar Tudo
+            </button>
+        </div>
+
     </form>
-    <script>
-        function configurarAnexos(inputId) {
-            const input = document.getElementById(inputId);
-            const acumulador = new DataTransfer();
+</div>
+<script>
+    function configurarAnexos(inputId) {
+        const input = document.getElementById(inputId);
+        if (!input) return;
 
-            const lista = document.createElement('ul');
-            lista.style.listStyle = 'none';
-            lista.style.paddingLeft = '20px';
-            (input.closest('p') || input.parentElement).insertAdjacentElement('afterend', lista);
+        const acumulador = new DataTransfer();
 
-            function desenharLista() {
-                lista.innerHTML = '';
-                Array.from(acumulador.files).forEach((arquivo, indice) => {
-                    const item = document.createElement('li');
-                    item.textContent = '📄 ' + arquivo.name + ' ';
+        const lista = document.createElement('ul');
+        lista.className = 'mt-2 space-y-1 text-xs text-gray-700 list-none pl-0';
+        
+        const parentElem = input.closest('p') || input.parentElement;
+        parentElem.insertAdjacentElement('afterend', lista);
 
-                    const botao = document.createElement('button');
-                    botao.type = 'button';
-                    botao.textContent = '✕';
-                    botao.onclick = () => remover(indice);
+        function desenharLista() {
+            lista.innerHTML = '';
+            Array.from(acumulador.files).forEach((arquivo, indice) => {
+                const item = document.createElement('li');
+                item.className = 'flex items-center justify-between p-2 bg-gray-50 border border-gray-200 rounded-lg text-xs';
+                
+                const span = document.createElement('span');
+                span.className = 'truncate pr-2 font-medium text-gray-800';
+                span.textContent = '📄 ' + arquivo.name;
 
-                    item.appendChild(botao);
-                    lista.appendChild(item);
-                });
-            }
+                const botao = document.createElement('button');
+                botao.type = 'button';
+                botao.className = 'text-gray-400 hover:text-red-600 font-bold px-1.5 py-0.5 rounded transition text-xs shrink-0';
+                botao.textContent = '✕';
+                botao.onclick = () => remover(indice);
 
-            function remover(indice) {
-                acumulador.items.remove(indice);
-                input.files = acumulador.files;
-                desenharLista();
-            }
-
-            input.addEventListener('change', () => {
-                Array.from(input.files).forEach(arquivo => {
-                    const repetido = Array.from(acumulador.files).some(f =>
-                        f.name === arquivo.name &&
-                        f.size === arquivo.size &&
-                        f.lastModified === arquivo.lastModified
-                    );
-                    if (!repetido) acumulador.items.add(arquivo);
-                });
-                input.files = acumulador.files;
-                desenharLista();
+                item.appendChild(span);
+                item.appendChild(botao);
+                lista.appendChild(item);
             });
         }
 
+        function remover(indice) {
+            acumulador.items.remove(indice);
+            input.files = acumulador.files;
+            desenharLista();
+        }
+
+        input.addEventListener('change', () => {
+            Array.from(input.files).forEach(arquivo => {
+                const repetido = Array.from(acumulador.files).some(f =>
+                    f.name === arquivo.name &&
+                    f.size === arquivo.size &&
+                    f.lastModified === arquivo.lastModified
+                );
+                if (!repetido) acumulador.items.add(arquivo);
+            });
+            input.files = acumulador.files;
+            desenharLista();
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
         configurarAnexos('id_campo_mvs');
         configurarAnexos('id_campo_os');
-        </script>
+    });
+</script>
 {% endblock %}
-</body>
-</html>
