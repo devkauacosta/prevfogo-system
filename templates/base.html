@@ -1,16 +1,85 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Frota PrevFogo/IBAMA{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            zoom: 125%;
+        }
+        @supports not (zoom: 125%) {
+            body {
+                transform: scale(1.25);
+                transform-origin: top left;
+                width: 80%;
+            }
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #111827;
+        }
+    </style>
 </head>
-<body>
-    
-    <h1>PrevFogo/IBAMA - Veículos</h1>
-    <a href="{% url 'veiculo_novo' %}">Cadastrar Veículo</a>
-
-    {% block content %}
-    {% endblock %}
+<body class="min-h-screen flex flex-col antialiased bg-white text-gray-900">
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+            <a href="/" class="flex items-center gap-3 shrink-0 text-gray-900 no-underline hover:opacity-90 transition">
+                <img 
+                    src="{% static 'img/prevfogoibama.jpeg' %}" 
+                    alt="Logo Prevfogo/IBAMA" 
+                    class="h-10 w-auto object-contain"
+                    onerror="this.onerror=null; this.src='https://upload.wikimedia.org/wikipedia/commons/e/e0/Ibama_logo.svg';"
+                />
+                <div class="flex flex-col border-l border-gray-200 pl-3">
+                    <span class="font-bold text-base leading-tight tracking-tight text-black">PrevFogo / IBAMA</span>
+                    <span class="text-[10px] text-gray-500 font-medium uppercase tracking-widest mt-0.5">Controle de Veículos</span>
+                </div>
+            </a>
+            <form method="GET" action="{% url 'lista_veiculos' %}" class="flex-1 max-w-md mx-4 hidden md:flex items-center">
+                <div class="relative w-full">
+                    <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"></i>
+                    <input 
+                        type="text" 
+                        name="renavam__icontains" 
+                        placeholder="Buscar Renavam..." 
+                        value="{{ request.GET.renavam__icontains|default:'' }}"
+                        class="w-full pl-9 pr-20 py-2 bg-gray-50 border border-gray-200 rounded-lg text-xs text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-black focus:border-black transition"
+                    />
+                    <button 
+                        type="submit" 
+                        class="absolute right-1 top-1/2 -translate-y-1/2 bg-black hover:bg-gray-800 text-white text-xs font-medium px-3 py-1 rounded-md transition"
+                    >
+                        Buscar
+                    </button>
+                </div>
+            </form>
+            <div class="flex items-center gap-3 shrink-0">
+                <a 
+                    href="{% url 'veiculo_novo' %}" 
+                    class="inline-flex items-center gap-2 bg-black hover:bg-gray-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition duration-150 shadow-sm no-underline"
+                >
+                    <i data-lucide="plus" class="w-4 h-4"></i>
+                    <span>Novo Veículo</span>
+                </a>
+            </div>
+        </div>
+    </header>
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+    </script>
 </body>
 </html>
