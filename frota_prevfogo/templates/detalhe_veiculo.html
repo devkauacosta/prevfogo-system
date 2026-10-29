@@ -1,52 +1,201 @@
 {% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veiculo: {{ veiculo.modelo }} - {{ veiculo.renavam }}</title>
-</head>
-<body>
-    {% block content %}
-        <header>
-            <a href="{% url 'lista_veiculos' %}">
-                <button type="button">Voltar</button>
+
+{% block title %}Veículo: {{ veiculo.modelo }} - {{ veiculo.renavam }}{% endblock %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto space-y-6">
+    <div class="flex items-center justify-between gap-4 pb-4 border-b border-gray-200">
+        <a 
+            href="{% url 'lista_veiculos' %}" 
+            class="inline-flex items-center gap-2 px-3 py-1.5 border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 text-xs font-semibold rounded-lg transition duration-150 shadow-sm no-underline"
+        >
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Voltar para Lista</span>
+        </a>
+
+        <div class="flex items-center gap-2">
+            <a 
+                href="{% url 'veiculo_update' veiculo.pk %}" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-black hover:bg-gray-800 text-white text-xs font-semibold rounded-lg transition duration-150 shadow-sm no-underline"
+            >
+                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+                <span>Editar</span>
             </a>
-        </header>
-        <main>
-            <h1>Veículo: {{ veiculo.modelo }} - Renavam: {{ veiculo.renavam }}</h1>
-            <p>{{ veiculo.renavam }}</p>
-            <p>{{ veiculo.chassi }}</p>
-            <p>{{ veiculo.placa }}</p>
-            <p>{{ veiculo.marca }}</p>
-            <p>{{ veiculo.modelo }}</p>
-            <p>{{ veiculo.ano }}</p>
-            <p>{{ veiculo.tipo }}</p>
-            <p>{{ veiculo.patrimonio }}</p>
-            <p>{{ veiculo.quilometragem_atual }}</p>
-            <p>{{ veiculo.data_revisao }}</p>
-            <p>{{ veiculo.km_ultima_rev }}</p>
-            <p>{{ veiculo.prox_revisao }}</p>
-            {% if object %}
-                <h3>MVs cadastradas: </h3>
-                {% for doc in object.doc_mv.all %}
-                    <a href="{{ doc.documento_mv.url }}">{{ doc.nome_arquivo }}</a>
-                {% endfor %}
-                <h3>Ordens de Serviço cadastradas: </h3>
-                {% for doc in object.doc_os.all %}
-                    <a href="{{ doc.documento_os.url }}">{{ doc.nome_arquivo }}</a>
-                {% endfor %}
-            {% else %}
-                <h3>Não há Ordens de Serviço cadastradas</h3>
-            {% endif %}
-        </main>
-        <a href="{% url 'veiculo_update' veiculo.pk %}">
-            <button type="button">Editar</button>
-        </a>
-        <a href="{% url 'veiculo_delete' veiculo.pk %}">
-            <button type="button">Deletar</button>
-        </a>
-    {% endblock %}
-</body>
-</html>
+            <a 
+                href="{% url 'veiculo_delete' veiculo.pk %}" 
+                class="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 text-xs font-semibold rounded-lg transition duration-150 shadow-sm no-underline"
+            >
+                <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                <span>Deletar</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-gray-100 rounded-xl text-gray-900 border border-gray-200">
+                <i data-lucide="car" class="w-8 h-8"></i>
+            </div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <h1 class="text-xl font-bold tracking-tight text-gray-900">{{ veiculo.marca }} {{ veiculo.modelo }}</h1>
+                    <span class="bg-gray-100 text-gray-900 border border-gray-300 font-mono font-bold text-xs px-2 py-0.5 rounded">
+                        {{ veiculo.placa }}
+                    </span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1">
+                    Renavam: <span class="font-mono text-gray-700 font-medium">{{ veiculo.renavam }}</span> • 
+                    Patrimônio: <span class="font-mono text-gray-700 font-medium">{{ veiculo.patrimonio }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-6 border-t md:border-t-0 md:border-l border-gray-200 pt-4 md:pt-0 md:pl-6 text-xs">
+            <div>
+                <span class="text-gray-400 font-medium block uppercase text-[10px]">Quilometragem</span>
+                <span class="text-base font-bold font-mono text-gray-900">{{ veiculo.quilometragem_atual }} km</span>
+            </div>
+            <div>
+                <span class="text-gray-400 font-medium block uppercase text-[10px]">Ano / Tipo</span>
+                <span class="text-sm font-semibold text-gray-900">{{ veiculo.ano }} ({{ veiculo.tipo }})</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-gray-100 pb-2 flex items-center gap-2">
+                <i data-lucide="info" class="w-4 h-4 text-gray-700"></i>
+                Especificações Básicas
+            </h2>
+            <div class="space-y-3 text-xs">
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Renavam</span>
+                    <span class="font-mono font-medium text-gray-900">{{ veiculo.renavam }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Chassi</span>
+                    <span class="font-mono font-medium text-gray-900">{{ veiculo.chassi }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Placa</span>
+                    <span class="font-mono font-bold text-gray-900 bg-gray-50 px-2 py-0.5 rounded border border-gray-200">
+                        {{ veiculo.placa }}
+                    </span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Marca / Fabricante</span>
+                    <span class="font-medium text-gray-900">{{ veiculo.marca }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Modelo</span>
+                    <span class="font-medium text-gray-900">{{ veiculo.modelo }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Ano de Fabricação</span>
+                    <span class="font-medium text-gray-900">{{ veiculo.ano }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Categoria / Tipo</span>
+                    <span class="font-medium text-gray-900">{{ veiculo.tipo }}</span>
+                </div>
+                <div class="flex justify-between py-1">
+                    <span class="text-gray-500">Nº Patrimônio</span>
+                    <span class="font-mono font-medium text-gray-900">{{ veiculo.patrimonio }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-gray-500 border-b border-gray-100 pb-2 flex items-center gap-2">
+                <i data-lucide="wrench" class="w-4 h-4 text-gray-700"></i>
+                Controle de Manutenções
+            </h2>
+            <div class="space-y-3 text-xs">
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Quilometragem Atual</span>
+                    <span class="font-mono font-bold text-gray-900">{{ veiculo.quilometragem_atual }} km</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">Data da Última Revisão</span>
+                    <span class="font-medium text-gray-900">{{ veiculo.data_revisao|date:"d/m/Y" }}</span>
+                </div>
+                <div class="flex justify-between py-1 border-b border-gray-50">
+                    <span class="text-gray-500">KM na Última Revisão</span>
+                    <span class="font-mono font-medium text-gray-900">{{ veiculo.km_ultima_rev }} km</span>
+                </div>
+                <div class="flex justify-between py-1">
+                    <span class="text-gray-500">Data da Próxima Revisão</span>
+                    <span class="font-medium text-gray-900 bg-gray-100 px-2 py-0.5 rounded border border-gray-200">
+                        {{ veiculo.prox_revisao|date:"d/m/Y" }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-6">
+        <h2 class="text-sm font-bold text-gray-900 border-b border-gray-200 pb-3 flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4 text-gray-700"></i>
+            Documentos Anexados
+        </h2>
+
+        {% if object %}
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-3">
+                    <h3 class="text-xs font-semibold text-gray-700 flex items-center gap-2">
+                        <i data-lucide="file-check-2" class="w-4 h-4 text-gray-500"></i>
+                        MVs Cadastradas
+                    </h3>
+                    <div class="space-y-2">
+                        {% for doc in object.doc_mv.all %}
+                            <a 
+                                href="{{ doc.documento_mv.url }}" 
+                                target="_blank"
+                                class="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs font-medium text-gray-900 transition no-underline group"
+                            >
+                                <span class="truncate pr-2">{{ doc.nome_arquivo }}</span>
+                                <i data-lucide="download" class="w-4 h-4 text-gray-400 group-hover:text-black shrink-0"></i>
+                            </a>
+                        {% empty %}
+                            <p class="text-xs text-gray-400 italic bg-gray-50 p-3 rounded-lg border border-dashed border-gray-200">
+                                Nenhuma MV cadastrada.
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h3 class="text-xs font-semibold text-gray-700 flex items-center gap-2">
+                        <i data-lucide="clipboard-list" class="w-4 h-4 text-gray-500"></i>
+                        Ordens de Serviço Cadastradas
+                    </h3>
+                    <div class="space-y-2">
+                        {% for doc in object.doc_os.all %}
+                            <a 
+                                href="{{ doc.documento_os.url }}" 
+                                target="_blank"
+                                class="flex items-center justify-between p-3 bg-gray-50 hover:bg-gray-100 border border-gray-200 rounded-lg text-xs font-medium text-gray-900 transition no-underline group"
+                            >
+                                <span class="truncate pr-2">{{ doc.nome_arquivo }}</span>
+                                <i data-lucide="download" class="w-4 h-4 text-gray-400 group-hover:text-black shrink-0"></i>
+                            </a>
+                        {% empty %}
+                            <p class="text-xs text-gray-400 italic bg-gray-50 p-3 rounded-lg border border-dashed border-gray-200">
+                                Nenhuma Ordem de Serviço cadastrada.
+                            </p>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        {% else %}
+            <div class="py-8 text-center text-gray-500 bg-gray-50 rounded-xl border border-dashed border-gray-200">
+                <i data-lucide="folder-open" class="w-8 h-8 text-gray-300 mx-auto mb-2"></i>
+                <p class="text-xs font-medium">Não há documentos nem Ordens de Serviço cadastradas para este veículo.</p>
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}
