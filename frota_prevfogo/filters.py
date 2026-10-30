@@ -8,5 +8,6 @@ class VeiculoFilter(django_filters.FilterSet):
         fields = {
             "renavam": ["icontains"],
             "marca": ["exact"],
+            "ano": ["icontains"],
             "tipo": ["exact"],
         } 
